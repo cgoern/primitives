@@ -13,6 +13,8 @@
 		"prettier": "^3.3.3"
 	},
 	"scripts": {
+		"start": "esbuild src/text.js src/rich-text.js --bundle --outdir=www/dist --servedir=www --watch",
+		"build": "esbuild src/text.js src/rich-text.js --bundle --minify --outdir=dist",
 		"format": "prettier --write ."
 	},
 	"prettier": {
