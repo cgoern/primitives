@@ -1,11 +1,36 @@
 {
-  "name": "cdash",
-  "version": "0.0.0",
-  "description": "Zero-dependencies custom elements.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cgoern/cdash.git"
-  },
-  "author": "cgoern",
-  "license": "MIT"
+	"name": "cdash",
+	"version": "0.0.0",
+	"description": "Zero-dependencies custom elements.",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cgoern/cdash.git"
+	},
+	"author": "cgoern",
+	"license": "MIT",
+	"devDependencies": {
+		"esbuild": "^0.23.0",
+		"prettier": "^3.3.3"
+	},
+	"scripts": {
+		"format": "prettier --write ."
+	},
+	"prettier": {
+		"semi": false,
+		"singleQuote": true,
+		"printWidth": 100,
+		"tabWidth": 4,
+		"useTabs": true,
+		"overrides": [
+			{
+				"files": [
+					"*.md"
+				],
+				"options": {
+					"tabWidth": 2,
+					"useTabs": false
+				}
+			}
+		]
+	}
 }
