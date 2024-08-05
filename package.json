@@ -1,0 +1,11 @@
+{
+  "name": "cdash",
+  "version": "0.0.0",
+  "description": "Zero-dependencies custom elements.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgoern/cdash.git"
+  },
+  "author": "cgoern",
+  "license": "MIT"
+}
