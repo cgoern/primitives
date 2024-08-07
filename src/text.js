@@ -7,7 +7,7 @@ styles.replaceSync(`
 		font-family: var(--ui-text-font-family, var(--ui-font-family-primary, sans-serif));
 		letter-spacing: var(--ui-text-letter-spacing, var(--ui-letter-spacing-primary, normal));
 		font-size: calc(1rem * pow(var(--ui-font-size-ratio, 1.2), var(--ui-text-font-size-exponent, 0)));
-		line-height: calc(((1rem / 1.6) + 1em) * var(--ui-line-height-factor, 1));
+		line-height: calc(((16px / 1.6) + 1em) * var(--ui-line-height-factor, 1));
 		font-feature-settings: var(--ui-text-font-feature-settings, var(--ui-font-feature-settings-primary, 'liga' 1));
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
