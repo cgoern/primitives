@@ -11,7 +11,7 @@ template.innerHTML = `
 		<slot>Content</slot>
 	</div>`
 
-class RichText extends HTMLElement {
+class UIRichText extends HTMLElement {
 	constructor() {
 		super()
 		this.attachShadow({ mode: 'open' }).adoptedStyleSheets.push(styles)
@@ -22,4 +22,4 @@ class RichText extends HTMLElement {
 	}
 }
 
-customElements.define('c-rich-text', RichText)
+customElements.define('ui-rich-text', UIRichText)

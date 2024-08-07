@@ -1,5 +1,5 @@
 {
-	"name": "cdash",
+	"name": "@cgoern/ui",
 	"version": "0.0.0",
 	"description": "Zero-dependencies custom elements.",
 	"repository": {
@@ -8,13 +8,18 @@
 	},
 	"author": "cgoern",
 	"license": "MIT",
+	"files": [
+		"dist/rich-text.js",
+		"dist/text.js"
+	],
 	"devDependencies": {
 		"esbuild": "^0.23.0",
+		"esbuild-minify-templates": "^0.11.0",
 		"prettier": "^3.3.3"
 	},
 	"scripts": {
-		"start": "esbuild src/text.js src/rich-text.js --bundle --outdir=www/dist --servedir=www --watch",
-		"build": "esbuild src/text.js src/rich-text.js --bundle --minify --outdir=dist",
+		"build": "node tools/build.mjs",
+		"start": "node tools/start.mjs",
 		"format": "prettier --write ."
 	},
 	"prettier": {

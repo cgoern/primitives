@@ -7,9 +7,228 @@
 		<title>cdash</title>
 		<script type="module" src="dist/text.js"></script>
 		<script type="module" src="dist/rich-text.js"></script>
+		<link
+			rel="preload"
+			fetchpriority="high"
+			as="font"
+			href="fonts/Inter.woff2"
+			media="screen"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			fetchpriority="high"
+			as="font"
+			href="fonts/Merriweather.woff2"
+			media="screen"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			fetchpriority="high"
+			as="font"
+			href="fonts/FiraCode.woff2"
+			media="screen"
+			crossorigin
+		/>
+		<style>
+			@font-face {
+				font-family: 'Inter';
+				font-style: normal;
+				font-weight: 100 900;
+				font-display: swap;
+				src: url('fonts/Inter.woff2') format('woff2');
+			}
+
+			@font-face {
+				font-family: 'Merriweather';
+				font-style: normal;
+				font-weight: 100 900;
+				font-display: swap;
+				src: url('fonts/Merriweather.woff2') format('woff2');
+			}
+
+			@font-face {
+				font-family: 'FiraCode';
+				font-style: normal;
+				font-weight: 300 700;
+				font-display: swap;
+				src: url('fonts/FiraCode.woff2') format('woff2');
+			}
+
+			:root {
+				--ui-font-family-primary: 'Inter', sans-secondary;
+				--ui-font-family-secondary: 'Merriweather', serif;
+				--ui-font-family-tertiary: 'FiraCode', monospace;
+
+				--ui-letter-spacing-primary: calc((0.75rem - 1em) * 0.03);
+				--ui-letter-spacing-secondary: normal;
+				--ui-letter-spacing-tertiary: normal;
+
+				--ui-font-feature-settings-primary: 'calt' 1, 'liga' 1, 'ss07' 1, 'ss08' 1, 'cv01' 1,
+					'cv05' 1, 'cv06' 1;
+				--ui-font-feature-settings-secondary: 'liga' 1;
+				--ui-font-feature-settings-tertiary: 'liga' 1;
+
+				--ui-font-size-ratio: 1.333;
+				--ui-line-height-factor: 1;
+			}
+
+			html {
+				font-size: 100%;
+			}
+
+			body {
+				display: flex;
+				flex-direction: column;
+				gap: 4rem;
+				margin: 2rem;
+			}
+
+			div {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+
+			ui-text {
+				display: block;
+			}
+
+			ui-text:not(:defined) {
+				visibility: hidden;
+			}
+		</style>
 	</head>
 	<body>
-		<c-text>The quick brown fox jumps over the lazy dog 1234567890</c-text>
-		<c-rich-text>The quick brown fox jumps over the lazy dog 1234567890</c-rich-text>
+		<div>
+			<ui-text family="primary" level="-2"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="-2"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="-2"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<div>
+			<ui-text family="primary" level="-1"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="-1"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="-1"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<div>
+			<ui-text family="primary" level="0"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="0"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="0"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<div>
+			<ui-text family="primary" level="+1"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="+1"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="+1"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<div>
+			<ui-text family="primary" level="+2"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="+2"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="+2"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<div>
+			<ui-text family="primary" level="+3"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="+3"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="+3"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<div>
+			<ui-text family="primary" level="+4"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="+4"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="+4"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<div>
+			<ui-text family="primary" level="+5"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="+5"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="+5"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<div>
+			<ui-text family="primary" level="+6"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="+6"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="+6"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<script>
+			new EventSource('/esbuild').addEventListener('change', () => location.reload())
+		</script>
 	</body>
 </html>
