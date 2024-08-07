@@ -71,7 +71,7 @@
 				--ui-font-feature-settings-tertiary: 'liga' 1;
 
 				--ui-font-size-ratio: 1.333;
-				--ui-line-height-factor: 1;
+				--ui-line-height-factor: 1.1;
 			}
 
 			html {
@@ -88,15 +88,18 @@
 			div {
 				display: flex;
 				flex-direction: column;
-				gap: 1rem;
+				gap: 2rem;
+				background: rgba(255, 0, 0, 0.1);
+				padding: 2rem;
 			}
 
 			ui-text {
 				display: block;
+				background: rgba(0, 0, 0, 0.1);
 			}
 
 			ui-text:not(:defined) {
-				visibility: hidden;
+				display: hidden;
 			}
 		</style>
 	</head>
