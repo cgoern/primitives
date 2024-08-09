@@ -1,10 +1,10 @@
 {
-  "name": "@cgoern/ui",
+  "name": "@cgoern/primitives",
   "version": "0.0.0",
   "description": "Zero-dependencies custom elements.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cgoern/cdash.git"
+    "url": "git+https://github.com/cgoern/primitives.git"
   },
   "author": "cgoern",
   "license": "MIT",
