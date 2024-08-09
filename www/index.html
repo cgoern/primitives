@@ -70,8 +70,8 @@
 				--ui-font-feature-settings-secondary: 'liga' 1;
 				--ui-font-feature-settings-tertiary: 'liga' 1;
 
-				--ui-font-size-ratio: 1.333;
-				--ui-line-height-factor: 1.1;
+				--ui-font-size-ratio: 1.2;
+				--ui-line-height-factor: 1;
 			}
 
 			html {
@@ -81,25 +81,27 @@
 			body {
 				display: flex;
 				flex-direction: column;
-				gap: 4rem;
-				margin: 2rem;
+				align-items: center;
+				gap: 1rem;
+				margin: 1rem;
 			}
 
 			div {
 				display: flex;
 				flex-direction: column;
-				gap: 2rem;
-				background: rgba(255, 0, 0, 0.1);
+				gap: 4rem;
+				border: 1px solid oklch(90% 0 0);
 				padding: 2rem;
-			}
-
-			ui-text {
-				display: block;
-				background: rgba(0, 0, 0, 0.1);
+				width: min(100%, 50rem);
+				box-sizing: border-box;
 			}
 
 			ui-text:not(:defined) {
-				display: hidden;
+				display: none;
+			}
+
+			ui-text:defined {
+				display: block;
 			}
 		</style>
 	</head>
@@ -226,6 +228,34 @@
 				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
 			>
 			<ui-text family="tertiary" level="+6"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<div>
+			<ui-text family="primary" level="+7"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="+7"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="+7"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+		</div>
+		<div>
+			<ui-text family="primary" level="+8"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="secondary" level="+8"
+				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
+				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
+			>
+			<ui-text family="tertiary" level="+8"
 				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
 				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
 			>
