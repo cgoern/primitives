@@ -3,13 +3,40 @@ const styles = new CSSStyleSheet()
 
 styles.replaceSync(`
 	:host {
-		font-family: var(--ui-text-font-family, var(--ui-font-family-primary, sans-serif));
+		font-family: var(
+		    --ui-text-font-family,
+			var(--ui-font-family-primary, sans-serif)
+		);
+
+		font-size: round(
+		    nearest,
+			calc(1rem * pow(var(--ui-font-size-ratio, 1.2),
+			var(--ui-text-font-size-exponent, 0))),
+			1px
+		);
+
+		font-weight: var(
+		    --ui-text-font-weight,
+			var(--ui-font-weight-400, 400)
+		);
+
+		letter-spacing: var(
+		    --ui-text-letter-spacing,
+			var(--ui-letter-spacing-primary, normal)
+		);
+
+		line-height: round(
+		    nearest,
+			calc(((16px / 1.6) + 1em) * var(--ui-line-height-factor, 1)),
+			2px
+		);
+
+		font-feature-settings: var(
+		    --ui-text-font-feature-settings,
+			var(--ui-font-feature-settings-primary, 'liga' 1)
+		);
+
 		font-optical-sizing: auto;
-		font-size: round(nearest, calc(1rem * pow(var(--ui-font-size-ratio, 1.2), var(--ui-text-font-size-exponent, 0))), 1px);
-		font-weight: var(--ui-text-font-weight, var(--ui-font-weight-400, 400));
-		letter-spacing: var(--ui-text-letter-spacing, var(--ui-letter-spacing-primary, normal));
-		line-height: round(nearest, calc(((16px / 1.6) + 1em) * var(--ui-line-height-factor, 1)), 2px);
-		font-feature-settings: var(--ui-text-font-feature-settings, var(--ui-font-feature-settings-primary, 'liga' 1));
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
@@ -32,29 +59,89 @@ styles.replaceSync(`
         --ui-text-font-feature-settings: var(--ui-font-feature-settings-tertiary, normal);
 	}
 
-	:host([level='-2']) { --ui-text-font-size-exponent: -2; }
-	:host([level='-1']) { --ui-text-font-size-exponent: -1; }
-	:host([level='0']) { --ui-text-font-size-exponent: 0; }
-	:host([level='+1']) { --ui-text-font-size-exponent: 1; }
-	:host([level='+2']) { --ui-text-font-size-exponent: 2; }
-	:host([level='+3']) { --ui-text-font-size-exponent: 3; }
-	:host([level='+4']) { --ui-text-font-size-exponent: 4; }
-	:host([level='+5']) { --ui-text-font-size-exponent: 5; }
-	:host([level='+6']) { --ui-text-font-size-exponent: 6; }
-	:host([level='+7']) { --ui-text-font-size-exponent: 7; }
-	:host([level='+8']) { --ui-text-font-size-exponent: 8; }
+	:host([level='-2']) {
+	    --ui-text-font-size-exponent: -2;
+	}
 
-	:host([weight='100']) { --ui-text-font-weight: var(--ui-font-weight-100, 100); }
-	:host([weight='200']) { --ui-text-font-weight: var(--ui-font-weight-200, 200); }
-	:host([weight='300']) { --ui-text-font-weight: var(--ui-font-weight-300, 300); }
-	:host([weight='400']) { --ui-text-font-weight: var(--ui-font-weight-400, 400); }
-	:host([weight='500']) { --ui-text-font-weight: var(--ui-font-weight-500, 500); }
-	:host([weight='600']) { --ui-text-font-weight: var(--ui-font-weight-600, 600); }
-	:host([weight='700']) { --ui-text-font-weight: var(--ui-font-weight-700, 700); }
-	:host([weight='800']) { --ui-text-font-weight: var(--ui-font-weight-800, 800); }
-	:host([weight='900']) { --ui-text-font-weight: var(--ui-font-weight-900, 900); }
+	:host([level='-1']) {
+	    --ui-text-font-size-exponent: -1;
+	}
 
-	.content { padding: 1px 0; }
+	:host([level='0']) {
+	    --ui-text-font-size-exponent: 0;
+	}
+
+	:host([level='+1']) {
+	    --ui-text-font-size-exponent: 1;
+	}
+
+	:host([level='+2']) {
+	    --ui-text-font-size-exponent: 2;
+	}
+
+	:host([level='+3']) {
+	    --ui-text-font-size-exponent: 3;
+	}
+
+	:host([level='+4']) {
+	    --ui-text-font-size-exponent: 4;
+	}
+
+	:host([level='+5']) {
+	    --ui-text-font-size-exponent: 5;
+	}
+
+	:host([level='+6']) {
+	    --ui-text-font-size-exponent: 6;
+	}
+
+	:host([level='+7']) {
+	    --ui-text-font-size-exponent: 7;
+	}
+
+	:host([level='+8']) {
+	    --ui-text-font-size-exponent: 8;
+	}
+
+	:host([weight='100']) {
+	    --ui-text-font-weight: var(--ui-font-weight-100, 100);
+	}
+
+	:host([weight='200']) {
+	    --ui-text-font-weight: var(--ui-font-weight-200, 200);
+	}
+
+	:host([weight='300']) {
+	    --ui-text-font-weight: var(--ui-font-weight-300, 300);
+	}
+
+	:host([weight='400']) {
+	    --ui-text-font-weight: var(--ui-font-weight-400, 400);
+	}
+
+	:host([weight='500']) {
+	    --ui-text-font-weight: var(--ui-font-weight-500, 500);
+	}
+
+	:host([weight='600']) {
+	    --ui-text-font-weight: var(--ui-font-weight-600, 600);
+	}
+
+	:host([weight='700']) {
+	    --ui-text-font-weight: var(--ui-font-weight-700, 700);
+	}
+
+	:host([weight='800']) {
+	    --ui-text-font-weight: var(--ui-font-weight-800, 800);
+	}
+
+	:host([weight='900']) {
+	    --ui-text-font-weight: var(--ui-font-weight-900, 900);
+	}
+
+	.content {
+	    padding: 1px 0;
+	}
 
 	.content::before,
 	.content::after {
@@ -63,8 +150,13 @@ styles.replaceSync(`
 		height: 0;
 	}
 
-	.content::before { margin-top: calc(((1lh - round(nearest, 1cap, 2px)) / -2) - 1px); }
-	.content::after { margin-bottom: calc(((1lh - round(nearest, 1cap, 2px)) / -2) - 1px); }`)
+	.content::before {
+	    margin-top: calc(((1lh - round(nearest, 1cap, 2px)) / -2) - 1px);
+	}
+
+	.content::after {
+	    margin-bottom: calc(((1lh - round(nearest, 1cap, 2px)) / -2) - 1px);
+	}`)
 
 template.innerHTML = `
 	<div class="content">
