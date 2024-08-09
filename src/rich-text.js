@@ -12,14 +12,16 @@ template.innerHTML = `
 	</div>`
 
 class UIRichText extends HTMLElement {
-	constructor() {
-		super()
-		this.attachShadow({ mode: 'open' }).adoptedStyleSheets.push(styles)
-	}
+  constructor() {
+    super()
+    this.attachShadow({
+      mode: 'open',
+    }).adoptedStyleSheets.push(styles)
+  }
 
-	connectedCallback() {
-		this.shadowRoot.appendChild(template.content.cloneNode(true))
-	}
+  connectedCallback() {
+    this.shadowRoot.appendChild(template.content.cloneNode(true))
+  }
 }
 
 customElements.define('ui-rich-text', UIRichText)

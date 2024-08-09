@@ -1,267 +1,302 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Zero-dependencies custom elements." />
-		<title>cdash</title>
-		<script type="module" src="dist/text.js"></script>
-		<script type="module" src="dist/rich-text.js"></script>
-		<link
-			rel="preload"
-			fetchpriority="high"
-			as="font"
-			href="fonts/Inter.woff2"
-			media="screen"
-			crossorigin
-		/>
-		<link
-			rel="preload"
-			fetchpriority="high"
-			as="font"
-			href="fonts/Merriweather.woff2"
-			media="screen"
-			crossorigin
-		/>
-		<link
-			rel="preload"
-			fetchpriority="high"
-			as="font"
-			href="fonts/FiraCode.woff2"
-			media="screen"
-			crossorigin
-		/>
-		<style>
-			@font-face {
-				font-family: 'Inter';
-				font-style: normal;
-				font-weight: 100 900;
-				font-display: swap;
-				src: url('fonts/Inter.woff2') format('woff2');
-			}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Zero-dependencies custom elements." />
+    <title>cdash</title>
+    <script type="module" src="dist/text.js"></script>
+    <script type="module" src="dist/rich-text.js"></script>
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="font"
+      href="fonts/Inter.woff2"
+      media="screen"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="font"
+      href="fonts/Merriweather.woff2"
+      media="screen"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="font"
+      href="fonts/FiraCode.woff2"
+      media="screen"
+      crossorigin
+    />
+    <style>
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('fonts/Inter.woff2') format('woff2');
+      }
 
-			@font-face {
-				font-family: 'Merriweather';
-				font-style: normal;
-				font-weight: 100 900;
-				font-display: swap;
-				src: url('fonts/Merriweather.woff2') format('woff2');
-			}
+      @font-face {
+        font-family: 'Merriweather';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('fonts/Merriweather.woff2') format('woff2');
+      }
 
-			@font-face {
-				font-family: 'FiraCode';
-				font-style: normal;
-				font-weight: 300 700;
-				font-display: swap;
-				src: url('fonts/FiraCode.woff2') format('woff2');
-			}
+      @font-face {
+        font-family: 'FiraCode';
+        font-style: normal;
+        font-weight: 300 700;
+        font-display: swap;
+        src: url('fonts/FiraCode.woff2') format('woff2');
+      }
 
-			:root {
-				--ui-font-family-primary: 'Inter', sans-secondary;
-				--ui-font-family-secondary: 'Merriweather', serif;
-				--ui-font-family-tertiary: 'FiraCode', monospace;
+      :root {
+        --ui-font-family-primary: 'Inter', sans-secondary;
+        --ui-font-family-secondary: 'Merriweather', serif;
+        --ui-font-family-tertiary: 'FiraCode', monospace;
 
-				--ui-letter-spacing-primary: calc((0.75rem - 1em) * 0.03);
-				--ui-letter-spacing-secondary: normal;
-				--ui-letter-spacing-tertiary: normal;
+        --ui-letter-spacing-primary: calc((0.75rem - 1em) * 0.03);
+        --ui-letter-spacing-secondary: normal;
+        --ui-letter-spacing-tertiary: normal;
 
-				--ui-font-feature-settings-primary: 'calt' 1, 'liga' 1, 'ss07' 1, 'ss08' 1, 'cv01' 1,
-					'cv05' 1, 'cv06' 1;
-				--ui-font-feature-settings-secondary: 'liga' 1;
-				--ui-font-feature-settings-tertiary: 'liga' 1;
+        --ui-font-feature-settings-primary: 'calt' 1, 'liga' 1, 'ss07' 1,
+          'ss08' 1, 'cv01' 1, 'cv05' 1, 'cv06' 1;
+        --ui-font-feature-settings-secondary: 'liga' 1;
+        --ui-font-feature-settings-tertiary: 'liga' 1;
 
-				--ui-font-size-ratio: 1.2;
-				--ui-line-height-factor: 1;
-			}
+        --ui-font-size-ratio: 1.2;
+        --ui-line-height-factor: 1;
+      }
 
-			html {
-				font-size: 100%;
-			}
+      html {
+        font-size: 100%;
+      }
 
-			body {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 1rem;
-				margin: 1rem;
-			}
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin: 1rem;
+      }
 
-			div {
-				display: flex;
-				flex-direction: column;
-				gap: 4rem;
-				border: 1px solid oklch(90% 0 0);
-				padding: 2rem;
-				width: min(100%, 50rem);
-				box-sizing: border-box;
-			}
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        border: 1px solid oklch(90% 0 0);
+        padding: 2rem;
+        width: min(100%, 50rem);
+        box-sizing: border-box;
+      }
 
-			ui-text:not(:defined) {
-				display: none;
-			}
+      ui-text:not(:defined) {
+        display: none;
+      }
 
-			ui-text:defined {
-				display: block;
-			}
-		</style>
-	</head>
-	<body>
-		<div>
-			<ui-text family="primary" level="-2"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="-2"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="-2"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<div>
-			<ui-text family="primary" level="-1"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="-1"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="-1"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<div>
-			<ui-text family="primary" level="0"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="0"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="0"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<div>
-			<ui-text family="primary" level="+1"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="+1"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="+1"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<div>
-			<ui-text family="primary" level="+2"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="+2"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="+2"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<div>
-			<ui-text family="primary" level="+3"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="+3"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="+3"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<div>
-			<ui-text family="primary" level="+4"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="+4"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="+4"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<div>
-			<ui-text family="primary" level="+5"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="+5"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="+5"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<div>
-			<ui-text family="primary" level="+6"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="+6"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="+6"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<div>
-			<ui-text family="primary" level="+7"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="+7"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="+7"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<div>
-			<ui-text family="primary" level="+8"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="secondary" level="+8"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-			<ui-text family="tertiary" level="+8"
-				>Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus consequatur
-				recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
-			>
-		</div>
-		<script>
-			new EventSource('/esbuild').addEventListener('change', () => location.reload())
-		</script>
-	</body>
+      ui-text:defined {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <ui-text family="primary" level="-2"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="-2"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="-2"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <div>
+      <ui-text family="primary" level="-1"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="-1"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="-1"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <div>
+      <ui-text family="primary" level="0"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="0"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="0"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <div>
+      <ui-text family="primary" level="+1"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="+1"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="+1"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <div>
+      <ui-text family="primary" level="+2"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="+2"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="+2"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <div>
+      <ui-text family="primary" level="+3"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="+3"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="+3"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <div>
+      <ui-text family="primary" level="+4"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="+4"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="+4"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <div>
+      <ui-text family="primary" level="+5"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="+5"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="+5"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <div>
+      <ui-text family="primary" level="+6"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="+6"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="+6"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <div>
+      <ui-text family="primary" level="+7"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="+7"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="+7"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <div>
+      <ui-text family="primary" level="+8"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="secondary" level="+8"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+      <ui-text family="tertiary" level="+8"
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
+        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
+        et.</ui-text
+      >
+    </div>
+    <script>
+      new EventSource('/esbuild').addEventListener('change', () =>
+        location.reload(),
+      )
+    </script>
+  </body>
 </html>
