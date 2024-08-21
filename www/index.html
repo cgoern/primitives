@@ -27,7 +27,7 @@
       rel="preload"
       fetchpriority="high"
       as="font"
-      href="fonts/FiraCode.woff2"
+      href="fonts/GeistMono.woff2"
       media="screen"
       crossorigin
     />
@@ -49,17 +49,17 @@
       }
 
       @font-face {
-        font-family: 'FiraCode';
+        font-family: 'GeistMono';
         font-style: normal;
-        font-weight: 300 700;
+        font-weight: 100 900;
         font-display: swap;
-        src: url('fonts/FiraCode.woff2') format('woff2');
+        src: url('fonts/GeistMono.woff2') format('woff2');
       }
 
       :root {
         --ui-font-family-primary: 'Inter', sans-secondary;
         --ui-font-family-secondary: 'Merriweather', serif;
-        --ui-font-family-tertiary: 'FiraCode', monospace;
+        --ui-font-family-tertiary: 'GeistMono', monospace;
 
         --ui-letter-spacing-primary: calc((0.75rem - 1em) * 0.03);
         --ui-letter-spacing-secondary: normal;
@@ -72,6 +72,9 @@
 
         --ui-font-size-ratio: 1.2;
         --ui-line-height-factor: 1;
+
+        --ui-text-decoration-thickness: 5px;
+        --ui-text-underline-offset: 5px;
       }
 
       html {

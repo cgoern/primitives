@@ -1,15 +1,17 @@
 const template = document.createElement('template')
 const styles = new CSSStyleSheet()
+const css = String.raw
+const html = String.raw
 
-styles.replaceSync(`
-	:host {
-		display: block;
-	}`)
+styles.replaceSync(css`
+  :host {
+    display: block;
+  }
+`)
 
-template.innerHTML = `
-	<div>
-		<slot>Content</slot>
-	</div>`
+template.innerHTML = html` <div>
+  <slot>Content</slot>
+</div>`
 
 class UIRichText extends HTMLElement {
   constructor() {

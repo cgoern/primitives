@@ -1,7 +1,9 @@
 const template = document.createElement('template')
 const styles = new CSSStyleSheet()
+const css = String.raw
+const html = String.raw
 
-styles.replaceSync(`
+styles.replaceSync(css`
   :host {
     font-family: var(
       --ui-text-font-family,
@@ -20,10 +22,7 @@ styles.replaceSync(`
       1px
     );
 
-    font-weight: var(
-      --ui-text-font-weight,
-      var(--ui-font-weight-400, 400)
-    );
+    font-weight: var(--ui-text-font-weight, var(--ui-font-weight-400, 400));
 
     letter-spacing: var(
       --ui-text-letter-spacing,
@@ -32,9 +31,7 @@ styles.replaceSync(`
 
     line-height: round(
       nearest,
-      calc(
-        ((16px / 1.6) + 1em) * var(--ui-line-height-factor, 1)
-      ),
+      calc(((16px / 1.6) + 1em) * var(--ui-line-height-factor, 1)),
       2px
     );
 
@@ -43,27 +40,61 @@ styles.replaceSync(`
       var(--ui-font-feature-settings-primary, 'liga' 1)
     );
 
+    text-decoration-line: var(
+      --ui-text-text-decoration-line,
+      var(--ui-text-decoration-line, none)
+    );
+
+    text-decoration-color: var(
+      --ui-text-text-decoration-color,
+      var(--ui-text-decoration-color, currentColor)
+    );
+
+    text-decoration-style: var(
+      --ui-text-text-decoration-style,
+      var(--ui-text-decoration-style, solid)
+    );
+
+    text-decoration-thickness: var(
+      --ui-text-text-decoration-thickness,
+      var(--ui-text-decoration-thickness, auto)
+    );
+
+    text-underline-offset: var(
+      --ui-text-text-underline-offset,
+      var(--ui-text-underline-offset, auto)
+    );
+
     font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-	:host([family='primary']) {
+  :host([family='primary']) {
     --ui-text-font-family: var(--ui-font-family-primary, sans-serif);
     --ui-text-letter-spacing: var(--ui-letter-spacing-primary, normal);
-    --ui-text-font-feature-settings: var(--ui-font-feature-settings-primary, normal);
+    --ui-text-font-feature-settings: var(
+      --ui-font-feature-settings-primary,
+      normal
+    );
   }
 
   :host([family='secondary']) {
     --ui-text-font-family: var(--ui-font-family-secondary, serif);
     --ui-text-letter-spacing: var(--ui-letter-spacing-serif, normal);
-    --ui-text-font-feature-settings: var(--ui-font-feature-settings-secondary, normal);
+    --ui-text-font-feature-settings: var(
+      --ui-font-feature-settings-secondary,
+      normal
+    );
   }
 
   :host([family='tertiary']) {
     --ui-text-font-family: var(--ui-font-family-tertiary, monospace);
     --ui-text-letter-spacing: var(--ui-letter-spacing-tertiary, normal);
-    --ui-text-font-feature-settings: var(--ui-font-feature-settings-tertiary, normal);
+    --ui-text-font-feature-settings: var(
+      --ui-font-feature-settings-tertiary,
+      normal
+    );
   }
 
   :host([level='-2']) {
@@ -146,6 +177,10 @@ styles.replaceSync(`
     --ui-text-font-weight: var(--ui-font-weight-900, 900);
   }
 
+  :host([underline]) {
+    --ui-text-text-decoration-line: var(--ui-text-decoration-line, underline);
+  }
+
   .content {
     padding: 1px 0;
   }
@@ -163,12 +198,12 @@ styles.replaceSync(`
 
   .content::after {
     margin-bottom: calc(((1lh - round(nearest, 1cap, 2px)) / -2) - 1px);
-  }`)
+  }
+`)
 
-template.innerHTML = `
-	<div class="content">
-		<slot>Content</slot>
-	</div>`
+template.innerHTML = html` <div class="content">
+  <slot>Content</slot>
+</div>`
 
 class UIText extends HTMLElement {
   constructor() {
