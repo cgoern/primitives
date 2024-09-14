@@ -22,8 +22,6 @@ styles.replaceSync(css`
       1px
     );
 
-    font-weight: var(--ui-text-font-weight, var(--ui-font-weight-400, 400));
-
     letter-spacing: var(
       --ui-text-letter-spacing,
       var(--ui-letter-spacing-primary, normal)
@@ -65,6 +63,7 @@ styles.replaceSync(css`
       var(--ui-text-underline-offset, auto)
     );
 
+    font-weight: var(--ui-text-font-weight, var(--ui-font-weight-400, 400));
     font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
