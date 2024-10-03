@@ -57,24 +57,24 @@
       }
 
       :root {
-        --ui-font-family-primary: 'Inter', sans-secondary;
-        --ui-font-family-secondary: 'Merriweather', serif;
-        --ui-font-family-tertiary: 'GeistMono', monospace;
+        --UI-FontFamily-Primary: 'Inter', system-ui;
+        --UI-FontFamily-Secondary: 'Merriweather', serif;
+        --UI-FontFamily-Tertiary: 'GeistMono', monospace;
 
-        --ui-letter-spacing-primary: calc((0.75rem - 1em) * 0.03);
-        --ui-letter-spacing-secondary: normal;
-        --ui-letter-spacing-tertiary: normal;
+        --UI-LetterSpacing-Primary: calc((0.75rem - 1em) * 0.03);
+        --UI-LetterSpacing-Secondary: normal;
+        --UI-LetterSpacing-Tertiary: normal;
 
-        --ui-font-feature-settings-primary: 'calt' 1, 'liga' 1, 'ss07' 1,
-          'ss08' 1, 'cv01' 1, 'cv05' 1, 'cv06' 1;
-        --ui-font-feature-settings-secondary: 'liga' 1;
-        --ui-font-feature-settings-tertiary: 'liga' 1;
+        --UI-FontFeatureSettings-Primary: 'calt' 1, 'liga' 1, 'ss07' 1, 'ss08' 1,
+          'cv01' 1, 'cv05' 1, 'cv06' 1;
+        --UI-FontFeatureSettings-Secondary: 'liga' 1;
+        --UI-FontFeatureSettings-Tertiary: 'liga' 1;
 
-        --ui-font-size-ratio: 1.2;
-        --ui-line-height-factor: 1;
+        --UI-FontSizeRatio: 1.2;
+        --UI-LineHeightFactor: 1;
 
-        --ui-text-decoration-thickness: 5px;
-        --ui-text-underline-offset: 5px;
+        --UI-TextDecorationThickness: clamp(1px, 0.0625em, 3px);
+        --UI-TextUnderlineOffset: 0.125em;
       }
 
       html {
@@ -93,10 +93,16 @@
         display: flex;
         flex-direction: column;
         gap: 4rem;
-        border: 1px solid oklch(90% 0 0);
         padding: 2rem;
         width: min(100%, 50rem);
         box-sizing: border-box;
+        background: var(--div-background, transparent);
+        border: 1px solid var(--div-border-color, oklch(90% 0 0));
+
+        &:has([level='0']) {
+          --div-background: oklch(45% 0.3 265 / 10%);
+          --div-border-color: oklch(45% 0.3 265 / 10%);
+        }
       }
 
       ui-text:not(:defined) {
@@ -127,7 +133,7 @@
       >
     </div>
     <div>
-      <ui-text family="primary" level="-1"
+      <ui-text family="primary" level="-1" underline
         >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
         consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
         et.</ui-text
@@ -144,17 +150,17 @@
       >
     </div>
     <div>
-      <ui-text family="primary" level="0"
+      <ui-text family="primary" level="0" underline
         >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
         consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
         et.</ui-text
       >
-      <ui-text family="secondary" level="0"
+      <ui-text family="secondary" level="0" underline
         >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
         consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
         et.</ui-text
       >
-      <ui-text family="tertiary" level="0"
+      <ui-text family="tertiary" level="0" underline
         >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
         consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
         et.</ui-text
@@ -178,7 +184,7 @@
       >
     </div>
     <div>
-      <ui-text family="primary" level="+2"
+      <ui-text family="primary" level="+2" underline
         >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
         consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
         et.</ui-text
@@ -223,23 +229,22 @@
         et.</ui-text
       >
       <ui-text family="tertiary" level="+4"
-        >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
-        consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
-        et.</ui-text
+        >Odio laudantium dolorem et dignissimos quis. Aut dolor v consequatur
+        recusandae. Enim libero voluptas quo aut enim corrupti a et.</ui-text
       >
     </div>
     <div>
-      <ui-text family="primary" level="+5"
+      <ui-text family="primary" level="+5" underline
         >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
         consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
         et.</ui-text
       >
-      <ui-text family="secondary" level="+5"
+      <ui-text family="secondary" level="+5" underline
         >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
         consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
         et.</ui-text
       >
-      <ui-text family="tertiary" level="+5"
+      <ui-text family="tertiary" level="+5" underline
         >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
         consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
         et.</ui-text
@@ -280,7 +285,7 @@
       >
     </div>
     <div>
-      <ui-text family="primary" level="+8"
+      <ui-text family="primary" level="+8" underline
         >Odio laudantium dolorem et dignissimos quis. Aut dolor voluptatibus
         consequatur recusandae. Enim libero voluptas quo aut enim corrupti a
         et.</ui-text
