@@ -65,20 +65,32 @@
         --UI-LetterSpacing-Secondary: normal;
         --UI-LetterSpacing-Tertiary: normal;
 
-        --UI-FontFeatureSettings-Primary: 'calt' 1, 'liga' 1, 'ss07' 1, 'ss08' 1,
-          'cv01' 1, 'cv05' 1, 'cv06' 1;
+        --UI-FontFeatureSettings-Primary: 'calt' 1, 'liga' 1, 'ss07' 1,
+          'ss08' 1, 'cv01' 1, 'cv05' 1, 'cv06' 1;
         --UI-FontFeatureSettings-Secondary: 'liga' 1;
         --UI-FontFeatureSettings-Tertiary: 'liga' 1;
 
         --UI-FontSizeRatio: 1.2;
         --UI-LineHeightFactor: 1;
 
-        --UI-TextDecorationThickness: clamp(1px, 0.0625em, 3px);
+        --UI-TextDecorationThickness: clamp(
+          1px,
+          round(nearest, 0.0625em, 1px),
+          4px
+        );
         --UI-TextUnderlineOffset: 0.125em;
       }
 
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --body-background: oklch(0% 0 0);
+          --body-color: oklch(100% 0 0);
+          --div-border-color: oklch(100% 0 0 / 20%);
+        }
+      }
+
       html {
-        font-size: 100%;
+        font-size: 106.25%;
       }
 
       body {
@@ -87,6 +99,8 @@
         align-items: center;
         gap: 1rem;
         margin: 1rem;
+        background: var(--body-background, oklch(100% 0 0));
+        color: var(--body-color, oklch(0% 0 0));
       }
 
       div {
@@ -97,11 +111,10 @@
         width: min(100%, 50rem);
         box-sizing: border-box;
         background: var(--div-background, transparent);
-        border: 1px solid var(--div-border-color, oklch(90% 0 0));
+        border: 1px solid var(--div-border-color, oklch(0% 0 0 / 10%));
 
         &:has([level='0']) {
-          --div-background: oklch(45% 0.3 265 / 10%);
-          --div-border-color: oklch(45% 0.3 265 / 10%);
+          --div-background: oklch(70% 0.15 265 / 25%);
         }
       }
 
