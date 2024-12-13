@@ -194,9 +194,9 @@ styles.replaceSync(css`
 `)
 
 template.innerHTML = html`<div class="content">
-  <span class="inner">
+  <div class="inner">
     <slot>Text</slot>
-  </span>
+  </div>
 </div>`
 
 class UIText extends HTMLElement {
